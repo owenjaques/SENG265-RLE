@@ -32,15 +32,16 @@ int main(int argc, char *argv[]){
 	
 	//checks string
 	int white_space_flag = 0;
-	int i;
+	int i = 0;
 	//added the check for a new line because for some reason when I create my own tests they always end with a new line no clue why
-	for(i = 0; i < STRING_MAX, string[i] != '\0', string[i] != '\n'; i++){
+	while(string[i] != '\0'){
 		//sees if the string characters are within the ascii ranges that are allowed and if there has been no white space so far
-		if(!(((string[i] >= ZERO_ASCII && string[i] <= NINE_ASCII) || (string[i] >= A_ASCII && string[i] <= Z_ASCII)) && white_space_flag == 0)){
+		if(!(((string[i] >= ZERO_ASCII && string[i] <= NINE_ASCII) || (string[i] >= A_ASCII && string[i] <= Z_ASCII)) && !white_space_flag)){
 			if(string[i] == SPACE_ASCII || string[i] == TAB_ASCII){
 				white_space_flag = 1;
 			}
 			else {
+				printf("%c|%d|%d|", string[i], string[i], i);
 				printf("Error: Invalid format\n");
 				exit(3);
 			}	
@@ -52,6 +53,7 @@ int main(int argc, char *argv[]){
 				exit(3);
 			}
 		}
+		i++;
 	}
 	
 	fclose(input_file);
