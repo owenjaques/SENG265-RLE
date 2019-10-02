@@ -6,8 +6,6 @@
 #define NINE_ASCII 57
 #define A_ASCII 65
 #define Z_ASCII 90
-#define SPACE_ASCII 32
-#define TAB_ASCII 9
 
 int main(int argc, char *argv[]){
 	if(argc < 3 || argv[2][0] != 'e' && argv[2][0] != 'd'){
@@ -33,15 +31,14 @@ int main(int argc, char *argv[]){
 	//checks string
 	int white_space_flag = 0;
 	int i = 0;
-	//added the check for a new line because for some reason when I create my own tests they always end with a new line no clue why
 	while(string[i] != '\0'){
-		//sees if the string characters are within the ascii ranges that are allowed and if there has been no white space so far
+		//sees if the string characters are valid and if there has been no white space so far
 		if(!(((string[i] >= ZERO_ASCII && string[i] <= NINE_ASCII) || (string[i] >= A_ASCII && string[i] <= Z_ASCII)) && !white_space_flag)){
-			if(string[i] == SPACE_ASCII || string[i] == TAB_ASCII){
+			//checks to see if the potentially invalid char is white space
+			if(string[i] == ' ' || string[i] == '\t' || string[i] == '\n' || string[i] == '\r' || string[i] == '\v'){
 				white_space_flag = 1;
 			}
 			else {
-				printf("%c|%d|%d|", string[i], string[i], i);
 				printf("Error: Invalid format\n");
 				exit(3);
 			}	
