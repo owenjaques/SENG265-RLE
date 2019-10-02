@@ -7,6 +7,23 @@
 #define A_ASCII 65
 #define Z_ASCII 90
 
+/*checkIfWhiteSpace
+ *purpose: check if c is white space
+ *param: (char) c
+ *returns: 1 if white space 0 otherwise
+ */
+int checkIfWhiteSpace(char c){
+	return (c == ' ' || c == '\t' || c == '\n' || c == '\r' || c == '\v');
+}
+
+void encode(char string[STRING_MAX]){
+
+}
+
+void decode(char string[STRING_MAX]){
+
+}
+
 int main(int argc, char *argv[]){
 	if(argc < 3 || argv[2][0] != 'e' && argv[2][0] != 'd'){
 		printf("Invalid Usage, expected: RLE{filename}[e|d]\n");
@@ -35,7 +52,7 @@ int main(int argc, char *argv[]){
 		//sees if the string characters are valid and if there has been no white space so far
 		if(!(((string[i] >= ZERO_ASCII && string[i] <= NINE_ASCII) || (string[i] >= A_ASCII && string[i] <= Z_ASCII)) && !white_space_flag)){
 			//checks to see if the potentially invalid char is white space
-			if(string[i] == ' ' || string[i] == '\t' || string[i] == '\n' || string[i] == '\r' || string[i] == '\v'){
+			if(checkIfWhiteSpace(string[i])){
 				white_space_flag = 1;
 			}
 			else {
@@ -52,8 +69,13 @@ int main(int argc, char *argv[]){
 		}
 		i++;
 	}
-	
 	fclose(input_file);
+
+	//sees what mode it is in
+	if(argv[2][0] == 'e')
+		encode(string);
+	else
+		decode(string); 
 		
 	return 0;
 }
