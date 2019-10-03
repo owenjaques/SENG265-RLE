@@ -7,7 +7,25 @@
 #define A_ASCII 65
 #define Z_ASCII 90
 
-/*isWhiteSpace
+/*
+ *purpose: check if c is an upper case letter
+ *param: (char) c
+ *returns: 1 if uppercase letter 0 otherwise
+ */
+int isUppercase(char c){
+	return (c >= A_ASCII && c <= Z_ASCII);
+}
+
+/*
+ *purpose: check if c is a number char 
+ *param: (char) c
+ *returns: 1 if a number 0 otherwise
+ */
+int isNumber(char c){
+	return (c >= ZERO_ASCII && c <= NINE_ASCII);
+}
+
+/*
  *purpose: check if c is white space
  *param: (char) c
  *returns: 1 if white space 0 otherwise
@@ -22,6 +40,10 @@ void encode(char input[STRING_MAX]){
 	int num_letters = 1;
 	char output[STRING_MAX];
 	while(input[i] != '\0' && !isWhiteSpace(input[i])){
+		if(isNumber(input[i])){
+			printf("Error: String could not be encoded\n");
+			exit(5);
+		}
 		if(input[i] == input[i+1])
 			num_letters++;
 		else {
@@ -67,7 +89,7 @@ int main(int argc, char *argv[]){
 	int i = 0;
 	while(string[i] != '\0'){
 		//sees if the string characters are valid and if there has been no white space so far
-		if(!(((string[i] >= ZERO_ASCII && string[i] <= NINE_ASCII) || (string[i] >= A_ASCII && string[i] <= Z_ASCII)) && !white_space_flag)){
+		if(!((isNumber(string[i]) || isUppercase(string[i])) && !white_space_flag)){
 			//checks to see if the potentially invalid char is white space
 			if(isWhiteSpace(string[i])){
 				white_space_flag = 1;
