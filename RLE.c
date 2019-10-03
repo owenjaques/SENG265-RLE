@@ -7,17 +7,34 @@
 #define A_ASCII 65
 #define Z_ASCII 90
 
-/*checkIfWhiteSpace
+/*isWhiteSpace
  *purpose: check if c is white space
  *param: (char) c
  *returns: 1 if white space 0 otherwise
  */
-int checkIfWhiteSpace(char c){
-	return (c == ' ' || c == '\t' || c == '\n' || c == '\r' || c == '\v');
+int isWhiteSpace(char c){
+	return (c == ' ' || c == '\t' || c == '\n' || c == '\r' || c == '\v' || c == '\f');
 }
 
-void encode(char string[STRING_MAX]){
-
+void encode(char input[STRING_MAX]){
+	int i = 0;
+	int j = 0;
+	int num_letters = 1;
+	char output[STRING_MAX];
+	while(input[i] != '\0' && !isWhiteSpace(input[i])){
+		if(input[i] == input[i+1])
+			num_letters++;
+		else {
+			output[j] = input[i];
+			output[j+1] = num_letters + 48;//increments by 48 to transform from int to char (ASCII)
+			num_letters = 1;
+			j += 2;
+		}	
+		i++;
+	}
+	output[j] = '\0';
+	printf("%s\n", output);
+	exit(0);
 }
 
 void decode(char string[STRING_MAX]){
@@ -52,7 +69,7 @@ int main(int argc, char *argv[]){
 		//sees if the string characters are valid and if there has been no white space so far
 		if(!(((string[i] >= ZERO_ASCII && string[i] <= NINE_ASCII) || (string[i] >= A_ASCII && string[i] <= Z_ASCII)) && !white_space_flag)){
 			//checks to see if the potentially invalid char is white space
-			if(checkIfWhiteSpace(string[i])){
+			if(isWhiteSpace(string[i])){
 				white_space_flag = 1;
 			}
 			else {
