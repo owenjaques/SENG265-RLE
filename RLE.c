@@ -35,8 +35,8 @@ int isWhiteSpace(char c){
 }
 
 void encode(char input[STRING_MAX]){
-	int i = 0;
-	int j = 0;
+	int i = 0;//an index for the input string
+	int j = 0;//an index for the output string
 	int num_letters = 1;
 	char output[STRING_MAX];
 	while(input[i] != '\0' && !isWhiteSpace(input[i])){
@@ -59,8 +59,30 @@ void encode(char input[STRING_MAX]){
 	exit(0);
 }
 
-void decode(char string[STRING_MAX]){
-
+void decode(char input[STRING_MAX]){
+	int i = 0;//an index for the input string
+	int j = 0;//an index for the output string
+	int number;
+	char letter;
+	char output[STRING_MAX];
+	while(input[i] != '\0' && !isWhiteSpace(input[i])){
+		letter = input[i];
+		number = input[i+1];//actually still the char code for a number
+		if(isNumber(letter) || isUppercase(number)){
+			printf("Error: String could not be encoded\n");
+			exit(5);
+		}
+		number -= 48;//makes it the actual number
+		int k;
+		for(k = 0; k < number; k++){
+			output[j] = letter;
+			j++;
+		}
+		i += 2;
+	}
+	output[j] = '\0';
+	printf("%s\n", output);
+	exit(0);
 }
 
 int main(int argc, char *argv[]){
