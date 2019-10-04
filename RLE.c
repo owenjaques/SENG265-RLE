@@ -55,7 +55,7 @@ void encode(char input[STRING_MAX]){
 		i++;
 	}
 	output[j] = '\0';
-	printf("%s\n", output);
+	printf("%s", output);
 	exit(0);
 }
 
@@ -81,7 +81,7 @@ void decode(char input[STRING_MAX]){
 		i += 2;
 	}
 	output[j] = '\0';
-	printf("%s\n", output);
+	printf("%s", output);
 	exit(0);
 }
 
