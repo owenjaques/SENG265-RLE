@@ -34,6 +34,13 @@ int isWhiteSpace(char c){
 	return (c == ' ' || c == '\t' || c == '\n' || c == '\r' || c == '\v' || c == '\f');
 }
 
+/*
+ * purpose: encodes an uppercase only string then prints its encoded form to the console
+ * 	ex: CCCTGGGKK -> C3T1G3K2
+ * param: string to be encoded of maximum size STRING_MAX
+ * exits: (5) if the string can not be encoded for any reason
+ * returns: void
+ */
 void encode(char input[STRING_MAX]){
 	int i = 0;//an index for the input string
 	int j = 0;//an index for the output string
@@ -59,6 +66,13 @@ void encode(char input[STRING_MAX]){
 	exit(0);
 }
 
+/*
+ * purpose: decodes an uppercase only string then prints its decoded form to the console
+ * 	ex: C3T1G3K2 -> CCCTGGGKK
+ * param: string to be encoded of maximum size STRING_MAX
+ * exits: (5) if the string can not be decoded for any reason
+ * returns: void
+ */
 void decode(char input[STRING_MAX]){
 	int i = 0;//an index for the input string
 	int j = 0;//an index for the output string
