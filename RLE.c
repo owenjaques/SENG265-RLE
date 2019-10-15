@@ -91,7 +91,7 @@ int main(int argc, char *argv[]){
 		exit(4);
 	}
 
-	if(argv[1][0] == '\0'){
+	if(argv[1][0] == '\0' || isWhiteSpace(argv[1][0])){
 		printf("Error: No input file specified!\n");
 		exit(1);
 	}
