@@ -1,0 +1,32 @@
+Student (NetlinkID): owenjaques
+
+Style Grade: 20/20
+
+
+Select Qualitative Feedback:
+===========================
+
+Formatting 
+...
+Properly formatted code. 
+
+
+Naming
+...
+Good naming conventions for variables/functions.
+
+
+Commenting
+...
+Good use of descriptive and meaningful comments.
+
+
+Functional Decomposition
+...
+Good use of code segmentation. Nice work.
+
+
+General Qualitative Feedback from Teaching Team:
+===============================================
+Overall nice and clean implementation.
+Very good work.
